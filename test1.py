@@ -101,14 +101,47 @@ Goodbye
 123
 """
 
-def how_many():
-    counts = []
-    numbers = input()
-    counts.extend([numbers.split()[0], numbers.split()[1], numbers.split()[2]])
-    res = set(input())
-    print(sum(1 for i in res if i not in counts))
+# def how_many():
+#     counts = []
+#     numbers = input()
+#     counts.extend([numbers.split()[0], numbers.split()[1], numbers.split()[2]])
+#     res = set(input())
+#     print(sum(1 for i in res if i not in counts))
+#
+# how_many()
 
-how_many()
+"""
+Во входном файле (вы можете читать данные из файла input.txt) записан текст. Словом считается последовательность непробельных символов идущих подряд, слова разделены одним или большим числом пробелов или символами конца строки. Для каждого слова из этого текста подсчитайте, сколько раз оно встречалось в этом тексте ранее.
+Формат ввода
+Вводится текст.
+Формат вывода
+Выведите ответ на задачу.
+Ввод                        Вывод:
+one two one tho three           0 0 1 0 0 
+"""
+
+# def count_words():
+#     with open("input.txt", "r", encoding="UTF-8") as f:
+#         text = []
+#         for line in f:
+#             text.extend(line.strip(" \n").split())
+#         res = {}
+#         for word in text:
+#             res[word] = res.get(word, 0) + 1 if word in res.keys() else 0
+#             print(res[word], end=" ")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
