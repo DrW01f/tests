@@ -154,8 +154,127 @@ x, не превосходящее по модулю 1000.
 #     print(min(res, key=res.get))
 
 
+"""
+В данном массиве из n целых чисел найдите три числа, произведение которых максимально.
+Формат ввода
+В единственной строке расположено 3<n10**5
+Формат вывода
+Выведите три элемента массива, дающих наибольшее произведение, в любом порядке.
+"""
+
+#
+# def max_of_three():
+#     numbers = list(map(int, input().split()))
+#
+#     # res = sorted(numbers, key=lambda x: abs(x),reverse=True)
+#     # print(*res[0:3])
+#
+#     if len(numbers) == 3:
+#         print(*numbers)
+#     else:
+#         first_number = numbers[0]
+#         if abs(numbers[1]) >= abs(first_number):
+#             second_number, first_number = first_number, numbers[1]  # порядок присвоения?
+#         else:
+#             second_number = numbers[1]
+#         if abs(numbers[2]) >= abs(first_number):
+#             # first_number, second_number, third_number = numbers[2], first_number, second_number
+#             third_number, second_number,  first_number = second_number, first_number, numbers[2]
+#         elif abs(numbers[2]) >= abs(second_number):
+#             # second_number, third_number = numbers[2], second_number
+#             third_number,  second_number = second_number, numbers[2]
+#         else:
+#             third_number = numbers[2]
+#
+#         for i in range(3, len(numbers)):
+#             if abs(first_number) <= abs(numbers[i]):
+#                 third_number, second_number, first_number = second_number, first_number, numbers[i]
+#             elif abs(second_number) <= abs(numbers[i]):
+#                 third_number, second_number = second_number, numbers[i]
+#             elif abs(third_number) <= abs(numbers[i]):
+#                 third_number = numbers[i]
+#         print(first_number, second_number, third_number)
+#
+#           выдает ошибки на закрытых тестах
+#
+# max_of_three()
+"""
+Через тернии к клиенту
+Известная компания Тындекс идёт в ногу со временем — с началом активных космических перелётов в компании открылся сервис Тындекс.Ракетакси: пользователю необходимо лишь указать координаты начала и конца перелёта, после чего за ним вылетит персональная ракета.
+По сути любой заказ можно описать в виде событий четырёх типов:
+
+A (accepted) - заказ принят в работу (ракета вылетела за клиентом);
+B (boarding) - клиент сел в ракету;
+S (success) - заказ успешно завершён (клиент вышел на планете назначения);
+C (cancelled) - заказ отменён.
+Все происходящие с ракетами события отправляются на сервера, где сразу логируются. Вот только из-за проблем со связью (метеоритные потоки, вспышки на звездах и т.д.) отправка событий иногда затягивается, из-за чего записи в получившемся логе могут идти не по порядку.
+Гарантируется, что все описанные в логе события задают один из следующих сценариев:
+A - B - S
+A - B - C
+A - C
+Вам, как главному аналитику (и по совместительству главному программисту) ракетопарка, необходимо исследовать лог за прошедший год и определить для каждой ракеты суммарное время движения (в минутах) в течение заказов.
+В каждый момент времени ракета выполняет только один заказ. Будем считать, что каждая ракета в каждый момент времени:
+или стоит на месте в ожидании заказа,
+или перемещается по космосу, выполняя заказ.
+Движение начинается после принятия заказа и завершается после отмены или завершения заказа. За одну минуту не может произойти несколько событий, связанных с одной и той же ракетой.
+14 21 30 3632 A 
+14 23 52 3632 B     2ч 22м
+15 0 5 3632 C       + 13м
+50 7 25 3632 A
+50 7 26 3632 C      +1
+
+                    120 + 22 +13 +1
+"""
+
+from datetime import datetime
 
 
+# def time_finder():
+#     count = int(input())
+#     logs = {}
+#     diff_time = 0
+#     for i in range(count):
+#         text = input().split()
+#         logs.setdefault(str(text[3]), []).append([list(map(int, text[0:3])), text[4]])
+#     for k in logs.keys():
+#         logs[k] = sorted(logs[k])
+#         # print(logs[k])
+#         for i in range(0, len(logs[k]) - 1):
+#             if logs[k][i + 1][1] != "A":
+#                 diff_time += (logs[k][i + 1][0][0] * 24 * 60 + logs[k][i + 1][0][1] * 60 + logs[k][i + 1][0][2]) - \
+#                              (logs[k][i][0][0] * 24 * 60 + logs[k][i][0][1] * 60 + logs[k][i][0][2])
+#             else:
+#                 continue
+#         print(diff_time, end=" ")
+#         diff_time = 0
+#
+#
+# time_finder()
 
 
+def water():
+    count_order = int(input())
+    orders = [list(map(int, input().split())) for _ in range(count_order)]
+    count_tasks = int(input())
+    # coast = 0
+    # total_time = 0
 
+    for i in range(count_tasks):
+        task = list(map(int, input().split()))
+
+        if task[2] == 1:
+            # for j in range(count_order):
+            #     coast += orders[j][2] if task[0] <= orders[j][0] <= task[1] else 0
+            coast = [sum(orders[j][2] for j in range(count_order) if task[0] <= orders[j][0] <= task[1])]
+            print(*coast, end=" ")
+            # coast = 0
+
+        if task[2] == 2:
+            # for j in range(count_order):
+            #     total_time += (orders[j][1] - orders[j][0]) if task[0] <= orders[j][1] <= task[1] else 0
+            total_time = [sum((orders[k][1] - orders[k][0]) for k in range(count_order) if task[0] <= orders[k][1] <=
+                              task[1])]
+            print(*total_time, end=" ")
+            # total_time = 0
+
+water()
