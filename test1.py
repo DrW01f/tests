@@ -226,9 +226,6 @@ A - C
                     120 + 22 +13 +1
 """
 
-from datetime import datetime
-
-
 # def time_finder():
 #     count = int(input())
 #     logs = {}
@@ -252,29 +249,38 @@ from datetime import datetime
 # time_finder()
 
 
-def water():
-    count_order = int(input())
-    orders = [list(map(int, input().split())) for _ in range(count_order)]
-    count_tasks = int(input())
-    # coast = 0
-    # total_time = 0
+# def water():
+#     count_order = int(input())
+#     orders = [list(map(int, input().split())) for _ in range(count_order)]
+#
+#     count_tasks = int(input())
+#     for i in range(count_tasks):
+#         task = list(map(int, input().split()))
+#         if task[2] == 1:
+#             # coast = [sum(orders[j][2] for j in range(count_order) if task[0] <= orders[j][0] <= task[1])]
+#             print(*[sum(orders[j][2] for j in range(count_order) if task[0] <= orders[j][0] <= task[1])], end=" ")
+#         else:
+#             # total_time = [sum((orders[k][1] - orders[k][0]) for k in range(count_order) if task[0] <= orders[k][1] <=
+#             #                   task[1])]
+#             print(*[sum((orders[k][1] - orders[k][0]) for k in range(count_order) if task[0] <= orders[k][1] <=
+#                               task[1])], end=" ")
+#
+#       считает долше 10 секунд
+# water()
 
-    for i in range(count_tasks):
-        task = list(map(int, input().split()))
+from string import ascii_uppercase
 
-        if task[2] == 1:
-            # for j in range(count_order):
-            #     coast += orders[j][2] if task[0] <= orders[j][0] <= task[1] else 0
-            coast = [sum(orders[j][2] for j in range(count_order) if task[0] <= orders[j][0] <= task[1])]
-            print(*coast, end=" ")
-            # coast = 0
 
-        if task[2] == 2:
-            # for j in range(count_order):
-            #     total_time += (orders[j][1] - orders[j][0]) if task[0] <= orders[j][1] <= task[1] else 0
-            total_time = [sum((orders[k][1] - orders[k][0]) for k in range(count_order) if task[0] <= orders[k][1] <=
-                              task[1])]
-            print(*total_time, end=" ")
-            # total_time = 0
+def code_names():
+    count = int(input())
+    info = [input().split(",") for _ in range(count)]
+    for person in info:
+        alpha = len(set((person[0] + person[1] + person[2])))
+        date = sum(int(i) for i in person[3]) + sum(int(j) for j in person[4])
+        first_alpha = ascii_uppercase.index(person[0][0]) + 1
+        res = hex(alpha + date * 64 + first_alpha * 256)
+        print(res[-3:].upper() if len(res) > 3 else res.zfill(3).upper(), end=" ")
 
-water()
+
+code_names()
+
