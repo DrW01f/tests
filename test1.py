@@ -226,16 +226,21 @@ A - C
                     120 + 22 +13 +1
 """
 
+
 # def time_finder():
 #     count = int(input())
+#     if count == 0:
+#         print(0)
 #     logs = {}
 #     diff_time = 0
 #     for i in range(count):
 #         text = input().split()
 #         logs.setdefault(str(text[3]), []).append([list(map(int, text[0:3])), text[4]])
-#     for k in logs.keys():
+#
+#     for k in sorted(logs.keys(), reverse=True):
+#
 #         logs[k] = sorted(logs[k])
-#         # print(logs[k])
+#
 #         for i in range(0, len(logs[k]) - 1):
 #             if logs[k][i + 1][1] != "A":
 #                 diff_time += (logs[k][i + 1][0][0] * 24 * 60 + logs[k][i + 1][0][1] * 60 + logs[k][i + 1][0][2]) - \
@@ -245,6 +250,7 @@ A - C
 #         print(diff_time, end=" ")
 #         diff_time = 0
 #
+# #Ошибка на закрытых тестах
 #
 # time_finder()
 
@@ -268,19 +274,122 @@ A - C
 #       считает долше 10 секунд
 # water()
 
-from string import ascii_uppercase
+
+# def code_names():
+#     count = int(input())
+#     for person in range(count):
+#         person = input().split(",")
+#         alpha = len(set((person[0] + person[1] + person[2])))
+#         date = sum(int(i) for i in person[3]) + sum(int(j) for j in person[4])
+#         first_alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.index(person[0][0].upper()) + 1
+#         res = hex(alpha + date * 64 + first_alpha * 256).upper()
+#         print(res[-3:].upper() if len(res) > 2 else res.zfill(3).upper(), end=" ")
+
+# import math
+#
+#
+# def how_many_sleep():
+#     n, m, x, y = list(map(int, input().split()))
+#     house = []
+#     count = 0  # кол-во частей окна
+#     for i in range(n * x):
+#         house.append(input().upper())
+#     # print(house)
+#     res = 0
+#
+#     for lvl in range(m * y, y):  # шаг для перехода по квартирам
+#         for weigh in range(n * x, x):  # идем по этажам сверху вниз
+#
+#             for h in range(x):  # цикл поиска на 1 квартиру
+#                 for w in range(y):
+#                     if house[x][y] == "X":
+#                         count += 1
+#
+#             if (x * y / 2) >= 0.5:
+#                 res += 1
+#             count = 0
+#             continue
+#         continue
+#     print(res)
+#     # неправильный ответ
+#
+#
+# how_many_sleep()
 
 
-def code_names():
+
+def code():
+    #               2       3       4     5      6      7       8       9
+    # dict_secret = ["ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"]
+    # зашифровка слов и поиск их в общем щифре с последующем тсключением этой подстроки из общей части??
+    dict_secrets = {"A": 2, "B": 22, "C": 222, "D": 3, "E": 33, "F": 333, "G": 4, "H": 44, "I": 444, "J": 5, "K": 55, \
+                    "L": 555, "M": 6, "N": 66, "O": 666, "P": 7, "Q": 77, "R": 777, "S": 7777, "T": 8, "U": 88, \
+                    "V": 888, "W": 9, "X": 99, "Y": 999, "Z": 9999}
+    code_numbers = input()
+    # 443355555566696667775553
+    dict_words = []
     count = int(input())
-    info = [input().split(",") for _ in range(count)]
-    for person in info:
-        alpha = len(set((person[0] + person[1] + person[2])))
-        date = sum(int(i) for i in person[3]) + sum(int(j) for j in person[4])
-        first_alpha = ascii_uppercase.index(person[0][0]) + 1
-        res = hex(alpha + date * 64 + first_alpha * 256)
-        print(res[-3:].upper() if len(res) > 3 else res.zfill(3).upper(), end=" ")
+    for i in range(count):
+        dict_words.append(input().upper())
+    # long = 0
+    # res = ""
+
+    # for i in range(1, len(code_numbers) - 1):
+    #     if code_numbers[i] == code_numbers[i - 1]:
+    #         if long < 2 or (code_numbers[i] == "7" or code_numbers[i] == "9" and long < 3):
+    #             long += 1
+    #         else:
+    #             res += dict_secret[int(code_numbers[i - 1]) - 2][long]
+    #             print(1, res, int(code_numbers[i - 1]), long)
+    #             long = 0
+    #             res = ""
+    #     else:
+    #         res += dict_secret[int(code_numbers[i - 1]) - 2][long]
+    #         print(2, res, int(code_numbers[i - 1]), long)
+    #         long = 0
+    #         res = ""
+
+        #     print(dict_secret[int(code_numbers[i - 1]) - 2], long)
+        #     if long < 3 or (code_numbers[i] == "7" or code_numbers[i] == "9" and long < 4):
+        #         long += 1
+        #     else:
+        #         res += dict_secret[int(code_numbers[i - 1]) - 2][long]
+        #         long = 0
+        #         res = ""
+        # else:
+        #     res += dict_secret[int(code_numbers[i - 1]) - 2][long]
+        #     long = 0
+        #     res = ""
+        # print(res)
+
+        # if code_numbers[i] != code_numbers[i - 1] or \
+        #         ((code_numbers[i] == "7" or code_numbers[i] == "9" and long > 3) or long <= 3):
+        #     res += dict_secret[int(code_numbers[i - 1]) - 2][long]
+        #     long = 0
+        #
+        # else:
+        #     long += 1
+        # print(res)
+            # if code_numbers[i] == "7" or code_numbers[i] == "9":
+            #     long += 1
+            # elif long < 3:
+            #     long += 1
+            # else:
+            #     res += dict_secret[int(code_numbers[i - 1]) - 2][long]
+            #     long = 0
+            #
+            # print(res)
+        # res = ""
+
+    # dict_words = sorted(dict_words, key=lambda x: len(x), reverse=True)  # сортировка по длине чтобы убрать подстроки
+    # выбирать слова удалением части строки для избежания повторов?
+    # for word in dict_words:
+    #     res = ""
+    #     for ch in word:
+    #         res += str(dict_secrets[ch])
+    #     if res in code_words:
+    #         print(word, end=" ")
+    #         code_words = code_words[:code_words.index(res)] + code_words[code_words.index(res) + len(word):]
 
 
-code_names()
-
+code()
