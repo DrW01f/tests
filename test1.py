@@ -391,5 +391,8 @@ def code():
     #         print(word, end=" ")
     #         code_words = code_words[:code_words.index(res)] + code_words[code_words.index(res) + len(word):]
 
-
+#Неправильное решение
 code()
+
+
+#https://coderun.yandex.ru/selections/quickstart/problems/gcd-and-lcm
