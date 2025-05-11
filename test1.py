@@ -212,7 +212,7 @@ x, не превосходящее по модулю 1000.
 #
 # max_of_three()
 
-#https://contest.yandex.ru/contest/50668/problems/B/
+# https://contest.yandex.ru/contest/50668/problems/B/
 """
 Через тернии к клиенту
 Известная компания Тындекс идёт в ногу со временем — с началом активных космических перелётов в компании открылся 
@@ -273,7 +273,7 @@ A - C
 #
 # time_finder()
 
-#https://contest.yandex.ru/contest/50668/problems/D/
+# https://contest.yandex.ru/contest/50668/problems/D/
 # def water():
 #     count_order = int(input())
 #     orders = [list(map(int, input().split())) for _ in range(count_order)]
@@ -336,7 +336,7 @@ A - C
 # how_many_sleep()
 
 
-
+"""
 def code():
     #               2       3       4     5      6      7       8       9
     # dict_secret = ["ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"]
@@ -412,6 +412,36 @@ def code():
 
 #Неправильное решение
 code()
+"""
+
+# https://coderun.yandex.ru/selections/quickstart/problems/gcd-and-lcm
+"""
+Лене очень нравится теория чисел. В прошлый раз она просила участников сезона угадать функцию Эйлера. К сожалению, для некоторых пользователей эта задача оказалась слишком сложной, поэтому Лена придумала задачку попроще.
+"""
 
 
-#https://coderun.yandex.ru/selections/quickstart/problems/gcd-and-lcm
+def theory_of_numbers():
+    intput_numbers = input().split()
+    a = int(intput_numbers[0])
+    b = int(intput_numbers[1])
+    if a == b:
+        print(f"{a} {a}")
+    else:
+        max_division = 1
+        min_division = 1
+        min_number = min(a, b)
+        # поиск максимального общего делителя
+        for i in range(1, min_number + 1):
+            if a % i == 0 and b % i == 0:
+                max_division = i
+        # поиск наименьшего общего делимого
+        if max(a, b) % min(a, b) == 0:
+            min_division = max(a, b)
+        else:
+            for i in range(min_number, a * b, min_number):
+                if i % a == 0 and i % b == 0:
+                    min_division = i
+        print(f"{max_division} {min_division}")
+
+
+theory_of_numbers()
