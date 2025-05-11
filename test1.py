@@ -419,29 +419,72 @@ code()
 Лене очень нравится теория чисел. В прошлый раз она просила участников сезона угадать функцию Эйлера. К сожалению, для некоторых пользователей эта задача оказалась слишком сложной, поэтому Лена придумала задачку попроще.
 """
 
+# def theory_of_numbers():
+#     intput_numbers = input().split()
+#     a = int(intput_numbers[0])
+#     b = int(intput_numbers[1])
+#     if a == b:
+#         print(f"{a} {a}")
+#     else:
+#         min_number = min(a, b)
+#         # поиск максимального общего делителя
+#         max_division = 1
+#         for i in range(1, min_number + 1):
+#             if a % i == 0 and b % i == 0:
+#                 max_division = i
+#         # поиск наименьшего общего делимого
+#         min_division = None
+#         if max(a, b) % min(a, b) == 0:
+#             min_division = max(a, b)
+#         else:
+#             for i in range(min_number, a * b+1, min_number):
+#                 if i % a == 0 and i % b == 0:
+#                     min_division = i
+#                     break
+#         print(f"{max_division} {min_division}")
+#         # 27 из 42 закрытых тестов, более 1 с
+#
+#
+# theory_of_numbers()
 
-def theory_of_numbers():
-    intput_numbers = input().split()
-    a = int(intput_numbers[0])
-    b = int(intput_numbers[1])
-    if a == b:
-        print(f"{a} {a}")
-    else:
-        max_division = 1
-        min_division = 1
-        min_number = min(a, b)
-        # поиск максимального общего делителя
-        for i in range(1, min_number + 1):
-            if a % i == 0 and b % i == 0:
-                max_division = i
-        # поиск наименьшего общего делимого
-        if max(a, b) % min(a, b) == 0:
-            min_division = max(a, b)
-        else:
-            for i in range(min_number, a * b, min_number):
-                if i % a == 0 and i % b == 0:
-                    min_division = i
-        print(f"{max_division} {min_division}")
+
+# https://coderun.yandex.ru/selections/quickstart/problems/more-your-neighbors
+
+"""
+Дан список чисел. Определите, сколько в этом списке элементов, которые больше двух своих соседей. Выведите количество таких элементов.
+"""
+
+# def neighbors_count():
+#     numbers = list(map(int, input().split()))
+#     long = len(numbers)
+#     if long < 3:
+#         print(0)
+#     else:
+#         res = 0
+#         for i in range(1, long-1):
+#             if numbers[i] > numbers[i-1] and numbers[i] > numbers[i+1]:
+#                 res += 1
+#         print(res)
+#
+# neighbors_count()
+
+# https://coderun.yandex.ru/selections/quickstart/problems/sapper
+
+"""
+Вам необходимо построить поле для игры «Сапер» по его конфигурации — размерам и координатам расставленных на нём мин.
+"""
 
 
-theory_of_numbers()
+def sapper():
+    row, column, mines = list(map(int, input().split()))
+    matrix = [[0] * column] * row
+    ords = list(map(int, input().split()))
+    for ord in ords:
+        matrix[ord[1]][ord[0]] = "*"
+        # y, x = list(map(int, input().split()))
+        # matrix[y][x] = "*"
+    print(matrix)
+    print(column, mines)
+
+
+sapper()
